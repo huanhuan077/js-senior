@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型</title>
+</head>
+<body>
+	<script type="">
+		function SuperType(){
+			this.property = true;
+		}
+
+		SuperType.prototype.getSuperValue = function(){
+			return this.property;
+
+		}
+
+		function SubType(){
+			this.subproperty = false;
+		}
+
+		SubType.prototype = new SuperType();
+		// 添加新方法
+		SubType.prototype.getSubValue = function(){
+			return this.subproperty;
+		}
+		// 重写超类型中的方法
+		SubType.prototype.getSuperValue = function(){
+			return false;
+		}
+
+		var instance =new SubType();
+		console.log(instance.getSuperValue());
+	</script>
+</body>
+</html>
