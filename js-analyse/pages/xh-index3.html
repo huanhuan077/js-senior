@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型继承3</title>
+</head>
+<body>
+	<script type="">
+		function SuperType(){
+			this.colors = ['red', 'blue', 'yellow'];
+		}
+		function SubType(){
+
+		}
+
+		SubType.prototype = new SuperType();
+		
+		var instance1 = new SubType();
+		instance1.colors.push('black');
+		console.log('1:',instance1.colors);
+
+		var instance2 = new SubType();
+		console.log('2:',instance2.colors);
+	</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>原型</title>
+	<title>原型继承</title>
 </head>
 <body>
 	<script type="">
@@ -18,7 +18,7 @@
 		function SubType(){
 			this.subproperty = false;
 		}
-
+		// 关键的思想，原型变成另一个类型的实例
 		SubType.prototype = new SuperType();
 		// 添加新方法
 		SubType.prototype.getSubValue = function(){
