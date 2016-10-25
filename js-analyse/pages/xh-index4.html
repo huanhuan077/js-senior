@@ -2,27 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>原型继承实例改变属性</title>
+	<title>借用构造函数</title>
 </head>
 <body>
 	<script type="">
 		function SuperType(){
-			this.colors = ['red', 'blue', 'yellow'];
+			this.colors = ['red', 'yellow', 'blue'];
 		}
+
 		function SubType(){
-
+			SuperType.call(this);
 		}
-
-		SubType.prototype = new SuperType();
-		
-		var instance2 = new SubType();
-		console.log('2:',instance2.colors);
 
 		var instance1 = new SubType();
 		instance1.colors.push('black');
 		console.log('1:',instance1.colors);
 
-		
+		var instance2 = new SubType();
+		console.log('2:',instance2.colors);
 	</script>
 </body>
 </html>
