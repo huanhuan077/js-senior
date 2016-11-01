@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Object.create()</title>
+</head>
+<body>
+	<script type="">
+		var person = {
+			name: 'nico',
+			friends: ['shely', 'bob', 'jack']
+		}
+
+		var other = Object.create(person);
+		other.friends.push('rose');
+		other.name = 'laoWang';
+
+		var someOne = Object.create(person);
+		someOne.name = someOne.name.toUpperCase();
+		someOne.friends.push('van');
+		console.log(person);
+		console.log('1:', other.friends);
+		console.log('2:', someOne.friends);
+		console.log('3:', person.friends);
+		console.log('4:', someOne.name);
+		console.log('5:', person.name);
+
+	</script>
+</body>
+</html>
