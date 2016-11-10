@@ -1,0 +1,16 @@
+{
+  "name": "vue-xh",
+  "version": "1.0.0",
+  "description": "vue test",
+  "main": "app.js",
+  "devDependencies": {
+    "babel-cli": "^6.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+
+  "author": "xiaohuan",
+  "license": "ISC"
+}
