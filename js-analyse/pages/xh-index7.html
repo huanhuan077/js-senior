@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>块级作用域</title>
+</head>
+<body>
+	<script type="">
+		function outPutNum(count){
+			for(var i=0;i<count;i++){
+				console.log(i);
+			}
+			console.log(i);
+			console.log(i);
+			for(i;i<count+2;i++){
+				console.log(i);
+			}
+		}
+		outPutNum(5);
+
+
+		function number(count){
+			(function(){
+				for(var i =0; i < count; i++){
+					alert(i);
+				}
+			})();
+			// console.log(i);   //会报错，匿名执行函数中的变量在执行完之后就立即销毁了。
+		}
+		number(5);
+	</script>
+</body>
+</html>

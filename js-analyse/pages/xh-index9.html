@@ -2,63 +2,61 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>单页面</title>
-	 <script src="../js/jquery.2.0.3.js" type="text/javascript"></script>
-	 <script src="../js/main.js" type="text/javascript"></script>
-    <script src="../js/base.js" type="text/javascript"></script>
+	<title>Document</title>
 </head>
 <body>
+	<script type="">
+		var b = {};//base
+		var slice = [].slice;
 
-</body>
-<script type="text/javascript">
-    var PageView = b.Class(b.AbstractView, {
-        _propertys_: function () {
-            this.template = '我是叶小钗';
-        },
-        init: function (superInit) {
-            console.log(superInit);
-            console.log('init');
-        },
-        createHtml: function () {
-            var htm = [
-            '<header>标题</header>',
-            '<div class="main">',
-                '<input type="text" id="txt" />',
-                '<input type="button" id="bt" value="点击我" />',
-                this.template,
-            '</div>',
-            '<footer>页尾</footer>'
-            ].join('');
-            return htm;
-        },
-        attrs: {
-            'data-id': 'test',
-            className: 'yexiaoc'
-        },
-        events: {
-            '#bt,click': function (el) {
-                var txt = this.find('#txt');
-                alert(txt.val())
-            }
-        },
-        onCreate: function () {
-            console.log('onCreate');
-        },
-        //dom创建后数据加载时执行，用于加载后执行我们的逻辑
-        onLoad: function () {
-            console.log('onLoad');
-        },
-        //dom创建后，未显示
-        onShow: function () {
-            console.log('onShow');
-        },
-        //dom隐藏前
-        onHide: function () {
-            console.log('onHide');
-        }
-    });
-    var view = new PageView();
-    view.show();
-    var s = '';
+	b.Class = function (supClass, childAttr) {
+    //若是传了第一个类，便继承之；否则实现新类
+    if (typeof supClass === 'object') {
+        childAttr = supClass;
+        supClass = function () { };
+    }
+
+    //定义我们创建的类
+    var newClass = function () {
+        this._propertys_();
+        this.init.apply(this, arguments);
+    };
+    newClass.prototype = new supClass();
+
+    var supInit = newClass.prototype.init || function () { };
+    var childInit = childAttr.init || function () { };
+    var _supAttr = newClass.prototype._propertys_ || function () { };
+    var _childAttr = childAttr._propertys_ || function () { };
+
+    for (var k in childAttr) {
+        //_propertys_中作为私有属性
+        childAttr.hasOwnProperty(k) && (newClass.prototype[k] = childAttr[k]);
+    }
+
+    //继承的属性有可能重写init方法
+    if (arguments.length && arguments[0].prototype && arguments[0].prototype.init === supInit) {
+        //重写新建类，初始化方法，传入其继承类的init方法
+        newClass.prototype.init = function () {
+            var scope = this;
+            var args = [function () {
+                supInit.apply(scope, arguments);
+            } ];
+            childInit.apply(scope, args.concat(slice.call(arguments)));
+        };
+    }
+
+    //内部属性赋值
+    newClass.prototype._propertys_ = function () {
+        _supAttr.call(this);
+        _childAttr.call(this);
+    };
+
+    //成员属性
+    for (var k in supClass) {
+        supClass.hasOwnProperty(k) && (newClass[k] = supClass[k]);
+    }
+    return newClass;
+};
 	</script>
+</body>
 </html>
