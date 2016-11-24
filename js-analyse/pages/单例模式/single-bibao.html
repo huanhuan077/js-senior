@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单例模式--闭包</title>
+</head>
+<body>
+	<script>
+		var Singleton = function (name) {
+			this.name = name;
+		}
+
+		Singleton.prototype.getName = function() {
+			alert(this.name);
+		}
+
+		Singleton.getInstance = (function (name) {
+			var instance;
+
+			return function (name) {
+				if (!instance) {
+					instance = new Singleton(name);
+				}
+
+			}
+
+		}
+
+		)();
+		var a = Singleton.getInstance('serve1');
+		var b = Singleton.getInstance('serve2');
+	</script>
+</body>
+</html>

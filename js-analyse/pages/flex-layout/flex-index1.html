@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex布局测试</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/flex.css">
+	<style type="text/css">
+	ul,li,div{
+		padding: 0;
+		margin: 0;
+	}
+	a{
+		text-decoration: none;
+		color:#fff;
+	}
+		.mui-flex{
+			list-style: none;
+			display: -webkit-flex;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-content: space-around;
+			box-sizing: border-box;
+			flex-wrap: wrap;
+			height: 200px;
+		}
+		.con{
+			width: 20%;
+			padding: 10px;
+			background: #fc5832;
+			display: flex;
+			display: -webkit-flex;
+			justify-content: center;
+		}
+	</style>
+</head>
+<body>
+	<ul class="mui-flex">
+		<li class="con"><a href="" class="component">方块1</a></li>
+		<li class="con"><a href="" class="component">方块2</a></li>
+		<li class="con"><a href="" class="component">方块3</a></li>
+		<li class="con"><a href="" class="component">方块4</a></li>
+		<li class="con"><a href="" class="component">方块5</a></li>
+		<li class="con"><a href="" class="component">方块6</a></li>
+	</ul>
+</body>
+</html>

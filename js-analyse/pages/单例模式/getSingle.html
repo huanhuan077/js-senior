@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单例模式的通用方法</title>
+</head>
+<body>
+<script type="text/javascript" src='../../js/jquery.js'></script>
+	<script type="text/javascript">
+
+		// 获取单例
+		var getSingle = function (fn) {
+			var result;
+			return function () {
+				return result || (result = fn.apply(result, arguments)); 
+			}
+		}
+		// 创建div登录框
+		var CreateLoginLayout = function () {
+			var div = $('<div></div>');
+			$(div).html('我是登录框！')
+			$(document.body).append(div);
+			return div;
+		}
+
+		// 创建iframe
+		var CreateIframe = function () {
+
+		}
+
+		var loginLayer = getSingle(CreateLoginLayout);
+		var iframelayer = getSingle(CreateIframe);
+
+	</script>
+</body>
+</html>

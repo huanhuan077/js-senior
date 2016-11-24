@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单例模式</title>
+	<!-- 保证一个类仅有一个实例，并且提供一个访问它的全局访问点。 -->
+</head>
+<body>
+	<script >
+		var Singleton = function (name) {
+			this.name = name;
+			this.instance = null;
+		}
+
+		Singleton.prototype.getName = function() {
+			alert(this.name);
+		}
+
+		Singleton.getInstance = function (name) {
+			if (!this.instance) {
+				this.instance = new Singleton(name);
+			}
+
+			return this.instance;
+		}
+
+		var a = Singleton.getInstance('serve1');
+		var b = Singleton.getInstance('serve2');
+	</script>
+</body>
+</html>
