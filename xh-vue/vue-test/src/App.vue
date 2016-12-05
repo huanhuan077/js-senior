@@ -11,15 +11,15 @@
 </template>
 
 <script>
-import firstcomponent from './components/FirstComponent'
-import secondcomponent from './components/SecondComponent'
+// import firstcomponent from './components/FirstComponent'
+// import secondcomponent from './components/SecondComponent'
 export default {
   data () {
     return {
       msg: 'author: xiaohuan'
     }
-  },
-  components: {firstcomponent, secondcomponent}
+  }
+  // components: {firstcomponent, secondcomponent}
 }
 
 </script>
