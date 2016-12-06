@@ -4,14 +4,23 @@
   <ul class="route-list">
     <li><router-link to="/user/foo">first link</router-link></li>
     <li> <router-link to="/user/foo/one">two link</router-link></li>
-    <li> <router-link to="/user/foo/two">three link</router-link></li>
+    <li> <router-link to="/user/foo/two" @click="show = !show">three link</router-link></li>
     <!-- <li><router-link :to="{{name: 'userName'}}">userName</router-link></li> -->
     </ul>
-    <transition name="slide-fade"><router-view></router-view> </transition>
+    <transition><router-view ></router-view> </transition>
 </div>
 </template>
-<style scoped>
-  @import 'style.css'
+<style>
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-active {
+  transform: translateX(50%);
+  opacity: 0;
+}
 </style>
 <script>
 // import firstcomponent from './components/FirstComponent'
@@ -19,7 +28,8 @@
 export default {
   data () {
     return {
-      msg: 'author: xiaohuan'
+      msg: 'author: xiaohuan',
+      show: true
     }
   }
   // components: {firstcomponent, secondcomponent}

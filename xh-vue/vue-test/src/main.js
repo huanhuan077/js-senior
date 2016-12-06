@@ -12,20 +12,21 @@ Vue.config.debug = true
 const User = {
   data () {
     return {
-      transitionName: 'slide-left'
+      // transitionName: 'slide-left'
+      show: true
     }
   },
-  watch: {
-    '$route' (to, from) {
-      const toDepth = to.path.split('/').length
-      const fromDepth = from.path.split('/').length
-      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
-    }
-  },
+  // watch: {
+  //   '$route' (to, from) {
+  //     const toDepth = to.path.split('/').length
+  //     const fromDepth = from.path.split('/').length
+  //     this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+  //   }
+  // },
   template: `
   <div>
   User {{$route.params.id}}
-  <transition :name= "transitionName"><router-view></router-view></transition>
+  <transition name= "slide-fade"><router-view v-if="show"></router-view></transition>
   </div>
   `
 }
