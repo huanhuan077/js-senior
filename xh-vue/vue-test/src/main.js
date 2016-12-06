@@ -10,21 +10,34 @@ Vue.use(VueResource)
 Vue.config.debug = true
 
 const User = {
+  data () {
+    return {
+      transitionName: 'slide-left'
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      const toDepth = to.path.split('/').length
+      const fromDepth = from.path.split('/').length
+      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    }
+  },
   template: `
   <div>
   User {{$route.params.id}}
-  <router-view></router-view>
+  <transition :name= "transitionName"><router-view></router-view></transition>
   </div>
   `
 }
 
 const Bar = {
-  template: '<div>bar</div>'
+  template: '<transition><div>bar</div></transition>'
 }
 const Foo = {
   template: '<div>I am Foo</div>'
 }
 const ChildFirst = {template: '<div>I am child-first!</div>'}
+// const Name = {template: '<div>I am name router!</div>'}
 
 const routes = [{
   path: '/user/:id',
@@ -34,7 +47,8 @@ const routes = [{
       path: '', component: Foo
     },
     {
-      path: 'one', component: Bar
+      path: 'one',
+      component: Bar
     },
 
     {
@@ -52,7 +66,13 @@ const routes = [{
       ]
     }
   ]
-}]
+}
+  // {
+  //   path: '/name',
+  //   component: Name,
+  //   name: 'userName'
+  // }
+]
 const router = new VueRouter({
   routes: routes
 })

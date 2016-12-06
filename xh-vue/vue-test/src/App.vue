@@ -5,11 +5,14 @@
     <li><router-link to="/user/foo">first link</router-link></li>
     <li> <router-link to="/user/foo/one">two link</router-link></li>
     <li> <router-link to="/user/foo/two">three link</router-link></li>
+    <!-- <li><router-link :to="{{name: 'userName'}}">userName</router-link></li> -->
     </ul>
-    <router-view></router-view> 
+    <transition name="slide-fade"><router-view></router-view> </transition>
 </div>
 </template>
-
+<style scoped>
+  @import 'style.css'
+</style>
 <script>
 // import firstcomponent from './components/FirstComponent'
 // import secondcomponent from './components/SecondComponent'
