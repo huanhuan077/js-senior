@@ -2,84 +2,22 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import app from './App'
-import secondcomponent from './components/SecondComponent'
+import routerConfig from './router'
+// import store from './vuex/index'
+// import * as filters from './js/filters'
 
-/* eslint-disable no-new */
 Vue.use(VueRouter)
 Vue.use(VueResource)
-Vue.config.debug = true
 
-const User = {
-  data () {
-    return {
-      // transitionName: 'slide-left'
-      show: true
-    }
-  },
-  // watch: {
-  //   '$route' (to, from) {
-  //     const toDepth = to.path.split('/').length
-  //     const fromDepth = from.path.split('/').length
-  //     this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
-  //   }
-  // },
-  template: `
-  <div>
-  User {{$route.params.id}}
-  <transition name= "slide-fade"><router-view v-if="show"></router-view></transition>
-  </div>
-  `
-}
+// Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))
 
-const Bar = {
-  template: '<transition><div>bar</div></transition>'
-}
-const Foo = {
-  template: '<div>I am Foo</div>'
-}
-const ChildFirst = {template: '<div>I am child-first!</div>'}
-// const Name = {template: '<div>I am name router!</div>'}
-
-const routes = [{
-  path: '/user/:id',
-  component: User,
-  children: [
-    {
-      path: '', component: Foo
-    },
-    {
-      path: 'one',
-      component: Bar
-    },
-
-    {
-      path: 'two',
-      component: secondcomponent,
-      children: [
-        {
-          path: 'child-first',
-          component: ChildFirst
-        },
-        {
-          path: 'child-second',
-          component: Foo
-        }
-      ]
-    }
-  ]
-}
-  // {
-  //   path: '/name',
-  //   component: Name,
-  //   name: 'userName'
-  // }
-]
 const router = new VueRouter({
-  routes: routes
+  routes: routerConfig, mode: 'history'
 })
 
 new Vue({
-  router: router,
+  router,
+  // store,
   render: h => h(app)
 }
 
