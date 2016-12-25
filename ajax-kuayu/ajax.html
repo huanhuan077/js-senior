@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨域</title>
+	<script type="text/javascript" src="./js/jquery.js"></script>
+</head>
+<body>
+<iframe id="bfrm" style="display: none;" src="http://b.test.com/ajax-kuayu/cross.html"></iframe>
+<button class="btn-sm" onclick="crossSub();">跨域请求</button>
+	<script>
+		function crosAjax () {
+			var url = "http://b.test.com/ajax-kuayu";
+			// var url = '/ajax-kuayu';
+			$.ajax(url).done(function (data) {
+				alert(data);
+			}).fail(function () {
+				alert('请求失败');
+			})
+
+		}
+
+		function crossSub () {
+			document.domain = 'test.com';
+			window.frames['bfrm'].contentWindow.doAjax(function(data) {
+				alert(data);
+			})
+		}
+	</script>
+</body>
+</html>
