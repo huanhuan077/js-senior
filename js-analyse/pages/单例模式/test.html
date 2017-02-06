@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="">
+    ul{width: 300px;border: red;}
+ul li{width: 300px;height: 70px;line-height: 70px;background: #fff;text-align: center;cursor: pointer;overflow: hidden;border: 1px solid #eee;}
+ul li:hover .circle{
+    animation: circle-opacity 0.5s linear 0s 1;
+    -webkit-animation-fill-mode:forwards;/*让动画停在最后是这个属性，*/
+    animation-fill-mode:forwards;
+}
+ul li a{position: relative;left: -50px;color: #333;top: -30px;}
+.circle{background: #fff;border-radius: 50%;width: 70px;height: 70px;display: inline-block;margin: 0 auto;}
+
+@keyframes circle-opacity{
+    0% {
+        background: rgba(192,225,250,0);
+    }
+    50% {
+        transform:scale(4);
+        background: rgba(192,225,250,1);
+    }
+    100% {
+        transform:scale(16);
+        background: rgba(192,225,250,0);
+    }
+}
+  </style>
+</head>
+<body>
+  
+
+ 
+
+<ul class="clear">
+    <li><span class="circle"></span><a href="#">Button</a></li>
+    <li><span class="circle"></span><a href="#">Elements</a></li>
+    <li><span class="circle"></span><a href="#">Forms</a></li>
+    <li><span class="circle"></span><a href="#">Charts</a></li>
+</ul>
+</body>
+</html>

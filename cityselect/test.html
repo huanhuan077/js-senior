@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script type="text/javascript"src="http://s1.xmcdn.com/lib/common/last/jquery/2.1.4/jquery.js"></script>
+<style >
+  select{
+    min-width: 100px;
+  }
+</style>
+</head>
+<body>
+<div class="demo">
+<h3>直接调用</h3>
+<p>二级联动，默认选项为：请选择</p>
+<div id="city_1">
+<select class="prov"></select>
+<select class="city"disabled="disabled"></select>
+</div>
+<p>三级联动，默认省份：北京，隐藏无数据的子级select</p>
+<div id="city_2">
+<select class="prov"></select>
+<select class="city"disabled="disabled"></select>
+<select class="dist"disabled="disabled"></select>
+</div>
+</div>
+<!-- <script type="text/javascript"src="./js/city.min.js"></script> -->
+<script>
+$(function () {
+  var dataHtml ='';
+
+  $(".prov").click(function() {
+
+    if(!$(this).find('option').length){
+      for(var i in jsonData.citylist) {
+        dataHtml += '<option>' + jsonData.citylist[i].p + '</option>'
+      }
+
+      $(this).append(dataHtml);
+    }
+  })
+})
+  var jsonData = {
+    "citylist":[ {
+      "p":"北京",
+      "c":[ {
+        "n":"东城区"
+      },
+
+      {
+        "n":"西城区"
+      },
+
+      {
+        "n":"崇文区"
+      },
+
+      {
+        "n":"宣武区"
+      },
+
+      {
+        "n":"朝阳区"
+      },
+
+      {
+        "n":"丰台区"
+      },
+
+      {
+        "n":"石景山区"
+      },
+
+      {
+        "n":"海淀区"
+      },
+
+      {
+        "n":"门头沟区"
+      },
+
+      {
+        "n":"房山区"
+      },
+
+      {
+        "n":"通州区"
+      },
+
+      {
+        "n":"顺义区"
+      },
+
+      {
+        "n":"昌平区"
+      },
+
+      {
+        "n":"大兴区"
+      },
+
+      {
+        "n":"平谷区"
+      },
+
+      {
+        "n":"怀柔区"
+      },
+
+      {
+        "n":"密云县"
+      },
+
+      {
+        "n":"延庆县"
+      },
+
+      ]
+    },
+
+    {
+      "p":"天津",
+      "c":[ {
+        "n":"和平区"
+      },
+
+      {
+        "n":"河东区"
+      },
+
+      {
+        "n":"河西区"
+      },
+
+      {
+        "n":"南开区"
+      },
+
+      {
+        "n":"河北区"
+      },
+
+      {
+        "n":"红挢区"
+      },
+
+      {
+        "n":"滨海新区"
+      },
+
+      {
+        "n":"东丽区"
+      },
+
+      {
+        "n":"西青区"
+      },
+
+      {
+        "n":"津南区"
+      },
+
+      {
+        "n":"北辰区"
+      },
+
+      {
+        "n":"宁河区"
+      },
+
+      {
+        "n":"武清区"
+      },
+
+      {
+        "n":"静海县"
+      },
+
+      {
+        "n":"宝坻区"
+      },
+
+      {
+        "n":"蓟县"
+      }
+
+      ]
+    }
+
+    ]
+  }
+
+  </script>
+  </body>
+  </html>

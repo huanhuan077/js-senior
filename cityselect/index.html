@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>基于jQuery+JSON的省市联动效果</title>
+
+<style type="text/css">
+.demo{width:80%; margin:20px auto}
+.demo h3{height:32px; line-height:32px}
+.demo p{line-height:24px}
+pre{margin-top:10px; padding:6px; background:#f7f7f7}
+</style>
+<script type="text/javascript" src="http://s1.xmcdn.com/lib/common/last/jquery/2.1.4/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.cityselect.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#city_1").citySelect({
+		nodata:"none",
+		required:false
+	}); 
+	$("#city_2").citySelect({
+		prov:"北京",
+		nodata:"none"
+	});
+	
+	$("#city_3").citySelect({
+    	prov:"湖南", 
+    	city:"长沙"
+	});
+	$("#city_4").citySelect({
+    	prov:"湖南", 
+    	city:"长沙",
+		dist:"岳麓区",
+		nodata:"none"
+	}); 
+	
+	$("#city_5").citySelect({
+		url:{"citylist":[
+				{"p":"前端技术","c":[{"n":"HTML"},{"n":"CSS","a":[{"s":"CSS2.0"},{"s":"CSS3.0"}]},{"n":"JAVASCIPT"}]},
+				{"p":"编程语言","c":[{"n":"C"},{"n":"C++"},{"n":"Objective-C"},{"n":"PHP"},{"n":"JAVA"}]},
+				{"p":"数据库","c":[{"n":"Mysql"},{"n":"SqlServer"},{"n":"Oracle"},{"n":"DB2"}]},
+			]},
+		prov:"",
+		city:"",
+		dist:"",
+		nodata:"none"
+	});
+});
+</script>
+</head>
+
+<body>
+
+<div id="main">
+  
+
+  <div class="demo">
+  	<h3>直接调用</h3>
+    <p>二级联动，默认选项为：请选择</p>
+  	<div id="city_1">
+  		<select class="prov"></select> 
+    	<select class="city" disabled="disabled"></select>
+    </div>
+    <p>三级联动，默认省份：北京，隐藏无数据的子级select</p>
+    <div id="city_2">
+  		<select class="prov"></select> 
+    	<select class="city" disabled="disabled"></select>
+        <select class="dist" disabled="disabled"></select>
+    </div>
+    <pre>
+$("#city_1").citySelect({nodata:"none",required:false}); 
+$("#city_2").citySelect({prov:"北京",nodata:"none"});
+    </pre>
+  </div>
+
+
+</div>
+
+<p id="stat"><script type="text/javascript" src="http://js.tongji.linezing.com/1870888/tongji.js"></script></p>
+</body>
+</html>
